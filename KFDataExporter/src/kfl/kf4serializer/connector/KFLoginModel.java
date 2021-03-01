@@ -11,7 +11,7 @@ package kfl.kf4serializer.connector;
 public class KFLoginModel {
 
 	private String host;
-	private int port = 80;
+	private int port = 443;
 	private String dbName;
 	private String user;
 	private String password;

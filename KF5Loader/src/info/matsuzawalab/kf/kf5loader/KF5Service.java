@@ -64,12 +64,15 @@ public class KF5Service {
 	}
 
 	private JSONArray getJSON(HttpUriRequest request) throws Exception {
+		System.out.println("HttpUriRequest request"+ request);
 		CloseableHttpResponse response = httpClient.execute(request);
 		int status = response.getStatusLine().getStatusCode();
+		System.out.println("Stateus"+ status);
 		if (status != 200) {
 			throw new KF5ServiceException(request.getURI() + " failed.", status);
 		}
 		String contentStr = EntityUtils.toString(response.getEntity(), "UTF-8");
+		System.out.println("contentStr"+contentStr);
 		if (!contentStr.startsWith("[")) {
 			contentStr = "[" + contentStr + "]";
 		}
@@ -81,7 +84,8 @@ public class KF5Service {
 		HttpPost method = new HttpPost(getServiceURI("account/userLogin"));
 		method.setEntity(
 				new UrlEncodedFormEntity(Form.form().add("userName", username).add("password", password).build()));
-		registrations = getJSON(method);
+//		TEMP 
+				registrations = getJSON(method);
 		return true;
 	}
 
@@ -100,6 +104,7 @@ public class KF5Service {
 			return registrations;
 		}
 		HttpGet method = new HttpGet(getServiceURI("account/registrations"));
+		System.out.println("method "+method);
 		return getJSON(method);
 	}
 

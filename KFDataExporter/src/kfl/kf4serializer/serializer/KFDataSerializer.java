@@ -47,6 +47,7 @@ public class KFDataSerializer {
 		dir.setLinkCount(numLinks);
 
 		File objsFile = dir.getObjectsFile();
+		System.out.println("objsFile"+objsFile);
 		int numObjects = dumpOne(theTxn, theTB, ALL_OBJECT_QUERY, objsFile);
 		dir.setObjectCount(numObjects);
 

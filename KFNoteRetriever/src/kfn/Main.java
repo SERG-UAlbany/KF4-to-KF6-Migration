@@ -63,26 +63,31 @@ public class Main {
 				.findOrCreateDirectory("kf.out");
 		final CDirectory newDir = baseDir.findOrCreateDirectory(model
 				.getDBName() + format.format(new Date()));
+		
+		System.out.println("Hell o  You're good");
 
 		// do task (build)
 		final CPanelProcessingMonitor monitor = new CPanelProcessingMonitor();
 		monitor.doTaskWithDialog(new ICTask() {
 			public void doTask() {
+				System.out.println("IN TO DO" );
 				build(conn, newDir, monitor);
 			}
 		});
 	}
 
 	private void build(ZTB conn, CDirectory dir, ICProgressMonitor monitor) {
+		System.out.println("REACHED BUILD"+ conn + dir+ monitor);
 		KFNoteBuilder builder = new KFNoteBuilder();
 		builder.build(conn, monitor);
 		List<KFNote> notes = builder.getNotes();
-
+		System.out.println("NOTES?????" + notes);
 		CFile file = dir.findOrCreateFile("data.csv");
 		file.setEncodingOut(CEncoding.Shift_JIS);
 		CStreamWriter writer = file.openWriter();
 		writer.writeLineFeed("\"ID\",\"Created\",\"Modifiled\",\"Group\",\"Name\",\"Title\",\"Text\"");
 		for (KFNote note : notes) {
+			System.out.println("note"+note.getTitle());
 			StringBuffer buf = new StringBuffer();
 			buf.append(note.getId());
 			buf.append(",");

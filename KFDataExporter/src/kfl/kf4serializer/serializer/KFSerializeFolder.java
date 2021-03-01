@@ -35,6 +35,9 @@ public class KFSerializeFolder {
 
 	private void process(File file, int len, IKFTupleProcessor processor)
 			throws Exception {
+		System.out.println("file"+ file);
+		System.out.println("len"+ len);
+		System.out.println("processor"+ processor);
 		ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
 		for (int i = 0; i < len; i++) {
 			Object obj;
@@ -100,12 +103,18 @@ public class KFSerializeFolder {
 			Properties prop = new Properties();
 			prop.load(new FileInputStream(getMetaFile()));
 			loginModel.setHost(prop.getProperty("host"));
-			loginModel.setPort(Integer.parseInt(prop.getProperty("port")));
+//			loginModel.setPort(Integer.parseInt(prop.getProperty("port")));
+			loginModel.setPort(80);
 			loginModel.setDBName(prop.getProperty("dbName"));
 			loginModel.setUser(prop.getProperty("user"));
 			loginModel.setPassword(prop.getProperty("pass"));
+			System.out.println("prop.getProperty(\"objects\")" + prop.getProperty("objects"));
+			System.out.println("prop.getProperty(\"links\")" + prop.getProperty("links"));
 			objectCount = Integer.parseInt(prop.getProperty("objects"));
 			linkCount = Integer.parseInt(prop.getProperty("links"));
+//			objectCount = 1000;
+//			linkCount = 1000;
+			System.out.println("prop "+prop + "loginModel" + loginModel);
 		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}

@@ -27,11 +27,14 @@ public class K4BasicWorldBuilder {
 	private PrintStream missingLinkOut = System.out;
 
 	public void build(CDirectory dir) throws Exception {
+		System.out.println("dir" + dir);
 		world = new BasicK4World();
+		System.out.println("world"+world);
 		missingLinkOut = new PrintStream(dir.findOrCreateFile(
 				"missingLinkInBasicLog.txt").toJavaFile());
-
+		System.out.println("missingLinkOut"+missingLinkOut);
 		KFSerializeFolder folder = new KFSerializeFolder(dir);
+		System.out.println("folder" + folder);
 		folder.loadMeta();
 		world.setName(folder.getLoginModel().getDBName());
 

@@ -43,7 +43,7 @@ public class KF4SerializerMain {
 
 	private void doLoad() throws Exception {
 		final KFLoginModel model = new KFLoginModel();
-
+		System.out.println("Atleast Pritn this");
 		// initialize
 		model.setPort(80);
 		File propfile = new File("kfloader.ini");
@@ -54,9 +54,10 @@ public class KF4SerializerMain {
 		prop.load(new FileReader(propfile));
 
 		model.setHost(prop.getProperty("host", "builder.ikit.org"));
-		model.setDBName(prop.getProperty("db", "Susana_test"));
-		model.setUser(prop.getProperty("user", ""));
-		model.setPassword(prop.getProperty("pass", ""));
+		model.setDBName(prop.getProperty("db", "GES 2014-2015"));
+		model.setUser(prop.getProperty("user", "manager"));
+		model.setPassword(prop.getProperty("pass", "build"));
+		
 
 		// connect
 		final ZTB conn = KFConnector.connectWithDialog(model);

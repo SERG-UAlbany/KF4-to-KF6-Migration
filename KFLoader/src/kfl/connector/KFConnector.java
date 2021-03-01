@@ -25,7 +25,9 @@ public class KFConnector {
 		String userName = model.getUser();
 		String password = model.getPassword();
 		ZID[] sessionZID = { null };
+		System.out.println("In connect Information"+host+" "+userName+" "+password+ " "+sessionZID);
 		conn = K5TBConnector.sGetTB_HTTP_UserName(host, hostOptions, userName, password, sessionZID);
+		System.out.println("Now Connection: "+ conn);
 		return conn;
 	}
 
@@ -41,6 +43,7 @@ public class KFConnector {
 			}
 
 			conn = /* KFConnector. */connect(model);
+			System.out.println("After Getting"+conn);
 			if (conn == null) {
 				panel.setFailiureMessage("Login Failed - Try Again");
 			}

@@ -26,8 +26,10 @@ public class KFConnector {
 		String userName = model.getUser();
 		String password = model.getPassword();
 		ZID[] sessionZID = { null };
-		conn = K5TBConnector.sGetTB_HTTP_UserName(host, hostOptions, userName,
+		System.out.println("In connect Information"+host.toString()+host.fHost+" "+userName+" "+password+ " "+sessionZID);
+		conn = K5TBConnector.sGetTB_HTTP_UserName(host, null, userName,
 				password, sessionZID);
+		System.out.println("conn"+conn);
 		return conn;
 	}
 

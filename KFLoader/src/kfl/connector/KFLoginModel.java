@@ -12,7 +12,7 @@ public class KFLoginModel {
 
 	private String protocol = "http";
 	private String host;
-	private int port = 80;
+	private int port = 443;
 	private String dbName;
 	private String user;
 	private String password;
