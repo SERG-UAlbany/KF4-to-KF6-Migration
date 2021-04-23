@@ -15,4 +15,16 @@ Run KFDataExporter > Src > Kfl.converter.kf6.app > K6ConverterMainTest.java
 Note: In K6ConverterMainTest, Add the "communityFolder" name as a parameter
 Now, You'll get desired output: data.json file in "communityFolder" 
 
-### For Retrieving data to be imported in KF6 database, use SERG-UAlbany/kf6-tools-public
+## Retrieving data to be imported in KF6 database
+Use tools folder
+#### Step1
+Rename data.json to exportedData.json and put it in tools folder
+#### Step2
+Run generateHashMap.js in order to generate hashmaps
+#### Step3
+Run edit_v3.js file to generate multiple json files.
+#### Step4 
+Keep All json files in a folder, rename the folder to "communityName" and use [import_community.py](https://github.com/SERG-UAlbany/kf6-tools-public) to import the data to KF6-database. 
+#### Step5 
+Run common.py and add communityId of the current community
+        
